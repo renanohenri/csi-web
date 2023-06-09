@@ -1,0 +1,18 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 470" width="550" height="470">
+	<title>logo-svg</title>
+	<style>
+		.s0 { fill: #004976 } 
+		.s1 { fill: #ff7f41 } 
+	</style>
+	<g id="Layer">
+		<g id="Layer">
+			<g id="Layer">
+				<g id="Layer">
+					<path id="Layer" fill-rule="evenodd" class="s0" d="m96 77.1c0-11.7 9.5-21.1 21.1-21.1h84.2v105.3h-105.3z"/>
+					<path id="Layer" fill-rule="evenodd" class="s0" d="m96 182.3h105.3c11.6 0 21-9.4 21-21v-105.3h105.3v231.5l-231.6 0.1z"/>
+					<path id="Layer" fill-rule="evenodd" class="s1" d="m453.9 77.1c0-11.6-9.5-21.1-21.1-21.1h-84.2v231.5c0 11.7-9.4 21.1-21.1 21.1h-231.5v84.2c0 11.6 9.4 21.1 21.1 21.1h315.7c11.6 0 21.1-9.5 21.1-21.1z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</svg>
