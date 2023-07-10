@@ -8,7 +8,6 @@ import Modelo from "./Modelo";
 import { URL } from "../shared";
 
 const getDepartment = async () => {
-
     const response = await axios.get(URL + '/departamentos')
     return response.data;
 }
@@ -17,6 +16,11 @@ const Departaments = () =>{
     const [departments, setDepartments] = React.useState(undefined);
     const user = useSelector(state => state.user);
     const isLogged = user.isLogged
+
+    const getDepartment = async () => {
+        const response = await axios.get(URL + '/departamentos')
+        return response.data;
+    }
 
     useEffect(() =>{
         if (isLogged){

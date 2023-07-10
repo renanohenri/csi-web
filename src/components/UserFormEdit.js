@@ -17,8 +17,10 @@ const getDepartment = async () => {
 const FormExibition = (props) => {
     const [ form, setForm ] = React.useState(props.user)
     const [ errors, setErrors ] =  React.useState({})
-    const [ success, setSuccess ] =  React.useState(false)
-    const [ failed, setFailed ] =  React.useState(false)
+    const [ successUpdate, setSuccessUpdate ] =  React.useState(false)
+    const [ failedUpdate, setFailedUpdate ] =  React.useState(false)
+    const [ successDelete, setSuccessDelete ] =  React.useState(false)
+    const [ failedDelete, setFailedDelete ] =  React.useState(false)
     const user = useSelector(state => state.user);
     const isLogged = user.isLogged
 
@@ -38,11 +40,11 @@ const FormExibition = (props) => {
         const response = await axios.put(URL + '/usuarios', form)
 
         if(response.status === 200){
-            setFailed(false)
-            setSuccess(true)
+            setFailedUpdate(false)
+            setSuccessUpdate(true)
         } else {
-            setSuccess(false)
-            setFailed(true)
+            setSuccessUpdate(false)
+            setFailedUpdate(true)
         }
         
         return response
@@ -84,6 +86,18 @@ const FormExibition = (props) => {
 
     }
 
+    const deleteUser = async (id) => {
+        console.log(id)
+        const response = await axios.delete(URL + '/usuario/'+ id)
+        if(response.status === 200){
+            setFailedDelete(false)
+            setSuccessDelete(true)
+        } else {
+            setSuccessDelete(false)
+            setFailedDelete(true)
+        }
+    }
+
     const FeedbackError = (error) => {
         if(!!error){
             return (
@@ -96,6 +110,8 @@ const FormExibition = (props) => {
 
 
     if(props.departments !== undefined){
+        var tempUser = form;
+
         return(
             <>
                 <Form onSubmit={handleSubmit} className="p-4 block-example border border-dark rounded mb-0">
@@ -122,11 +138,13 @@ const FormExibition = (props) => {
 
                     <div className="d-flex justify-content-between">
                         <Button type="submit" variant="outline-success">Salvar</Button>
-                        <Button type="submit" variant="outline-danger">Excluir</Button>
+                        <Button onClick={() => deleteUser(tempUser.id)} variant="outline-danger">Excluir</Button>
                     </div>
                 </Form>
-                { success ? <ModalResult text="Usuário atualizado com sucesso!" url="user"  tipo="success" ></ModalResult> : null }
-                { failed ? <ModalResult text="Falha ao atualizar usuario, tente novamente mais tarde!" tipo="failed" ></ModalResult> : null }
+                { successUpdate ? <ModalResult text="Usuário atualizado com sucesso!" url="user"  tipo="success" ></ModalResult> : null }
+                { failedUpdate ? <ModalResult text="Falha ao atualizar usuario, tente novamente mais tarde!" tipo="failed" ></ModalResult> : null }
+                { successDelete ? <ModalResult text="Usuário removido com sucesso!" url="user"  tipo="success" ></ModalResult> : null }
+                { failedDelete ? <ModalResult text="Falha ao remover usuario, tente novamente mais tarde!" tipo="failed" ></ModalResult> : null }
             </>
             
             

@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import React from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const CardHeader = styled.div`
   width: 100%;
@@ -72,7 +73,7 @@ const ListItem = ({ item, index }) => {
           >
             <CardHeader> 
               <BgDate statusItem={item.status} dataItem={item.data_agendamento}>
-                { new Date(item.data_agendamento).yyyymmdd() }
+                { moment(new Date(item.data_agendamento)).format('DD/MM') }
               </BgDate>
               <BgDate statusItem={item.status} dataItem={item.data_agendamento}>
                 { item.horario }
